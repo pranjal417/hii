@@ -64,9 +64,9 @@ const SignupModal = () => {
 
   return (
     <div id="signup-modal" className="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-2 sm:p-4">
-      <div className="bg-white rounded-2xl sm:rounded-3xl max-w-4xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-y-auto shadow-2xl">
+      <div className="bg-white rounded-2xl sm:rounded-3xl max-w-4xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-hidden shadow-2xl">
         {step === 1 ? (
-          <div className="p-4 sm:p-6 lg:p-8">
+          <div className="p-4 sm:p-6 lg:p-8 overflow-y-auto max-h-[95vh] sm:max-h-[90vh]">
             <div className="flex justify-between items-start sm:items-center mb-6 sm:mb-8">
               <div className="flex-1 pr-4">
                 <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900">Get Started for Free</h2>
@@ -130,12 +130,14 @@ const SignupModal = () => {
             <p className="text-center text-xs sm:text-sm text-gray-500 mt-4 sm:mt-6">No spam, ever. We respect your privacy.</p>
           </div>
         ) : (
-          <div className="flex flex-col lg:grid lg:grid-cols-2 min-h-[400px] sm:min-h-[500px] lg:min-h-[600px]">
-            <div className="bg-gradient-to-br from-orange-500 to-red-600 p-4 sm:p-6 lg:p-8 text-white relative overflow-hidden order-2 lg:order-1">
-              <button onClick={closeModal} className="absolute top-4 right-4 sm:top-6 sm:right-6 text-white/80 hover:text-white transition-colors z-10">
-                <X className="w-5 h-5 sm:w-6 sm:h-6" />
-              </button>
+          <div className="relative overflow-y-auto max-h-[95vh] sm:max-h-[90vh]">
+            {/* Close button - fixed position */}
+            <button onClick={closeModal} className="absolute top-4 right-4 sm:top-6 sm:right-6 text-white/80 hover:text-white transition-colors z-20 bg-black/20 rounded-full p-2">
+              <X className="w-5 h-5 sm:w-6 sm:h-6" />
+            </button>
 
+            {/* Orange Information Section - Always visible first */}
+            <div className="bg-gradient-to-br from-orange-500 to-red-600 p-6 sm:p-8 lg:p-12 text-white relative overflow-hidden">
               <div className="relative z-10">
                 <div className="mb-6 sm:mb-8">
                   <div className="flex flex-col sm:flex-row sm:items-center space-y-3 sm:space-y-0 sm:space-x-3 mb-4">
@@ -143,7 +145,7 @@ const SignupModal = () => {
                       <Video className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
                     </div>
                     <div>
-                      <h2 className="text-xl sm:text-2xl font-bold">FlashFire Webinar</h2>
+                      <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold">FlashFire Webinar</h2>
                       <div className="flex items-center space-x-3 sm:space-x-4 text-orange-100 text-sm sm:text-base">
                         <span className="flex items-center space-x-1">
                           <Clock className="w-3 h-3 sm:w-4 sm:h-4" /> <span>1 Hour</span>
@@ -159,7 +161,7 @@ const SignupModal = () => {
                   </p>
                 </div>
 
-                <div className="space-y-3 sm:space-y-4">
+                <div className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
                   <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4">What You'll Learn:</h3>
 
                   <div className="flex items-start space-x-2 sm:space-x-3">
@@ -195,7 +197,7 @@ const SignupModal = () => {
                   </div>
                 </div>
 
-                <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-white/20">
+                <div className="pt-4 sm:pt-6 border-t border-white/20">
                   <div className="grid grid-cols-3 gap-2 sm:gap-4 text-center">
                     <div>
                       <div className="text-lg sm:text-2xl font-bold">95%</div>
@@ -211,17 +213,26 @@ const SignupModal = () => {
                     </div>
                   </div>
                 </div>
+
+                {/* Scroll indicator for mobile */}
+                <div className="block lg:hidden mt-6 text-center">
+                  <div className="inline-flex items-center space-x-2 text-orange-100 text-sm">
+                    <span>Scroll down to book your slot</span>
+                    <div className="animate-bounce">↓</div>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div className="bg-white relative order-1 lg:order-2">
+            {/* Calendar Section - Scrollable below orange section */}
+            <div className="bg-white">
               <iframe
                 src="https://calendly.com/tripathipranjal01/flashfire"
                 width="100%"
-                height="100%"
+                height="600"
                 frameBorder="0"
                 title="Schedule a meeting"
-                className="rounded-none sm:rounded-br-2xl lg:rounded-br-3xl h-[400px] sm:h-[500px] lg:h-[600px] w-full"
+                className="w-full"
               ></iframe>
             </div>
           </div>
