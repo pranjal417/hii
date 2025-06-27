@@ -1,0 +1,121 @@
+import React from 'react';
+
+const MovingJobs = () => {
+  const jobs = [
+    {
+      company: "Redfin",
+      position: "Senior Recruiter",
+      time: "43 hours ago",
+      logo: "🏠"
+    },
+    {
+      company: "Motorola Solutions",
+      position: "Software Engineer",
+      time: "22 hours ago",
+      logo: "📱"
+    },
+    {
+      company: "Bank of America",
+      position: "Senior Data Analyst",
+      time: "5 hours ago",
+      logo: "🏦"
+    },
+    {
+      company: "Barclays",
+      position: "Software Engineer",
+      time: "17 hours ago",
+      logo: "💳"
+    },
+    {
+      company: "Goldman Sachs",
+      position: "Quantitative Analyst",
+      time: "8 hours ago",
+      logo: "💰"
+    },
+    {
+      company: "JPMorgan Chase",
+      position: "Full Stack Developer",
+      time: "12 hours ago",
+      logo: "🏛️"
+    }
+  ];
+
+  return (
+    <section className="py-16 bg-gradient-to-r from-gray-50 to-orange-50 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            Never Miss Out On New Jobs Again.
+          </h2>
+          <p className="text-xl text-gray-600 mb-8">
+            Join The Largest Job Board!
+          </p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
+              <div className="text-4xl font-bold text-orange-600 mb-2">400,000+</div>
+              <p className="text-gray-600">Today's new jobs</p>
+            </div>
+            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
+              <div className="text-4xl font-bold text-orange-600 mb-2">8,000,000+</div>
+              <p className="text-gray-600">Total jobs</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Moving Jobs Container */}
+        <div className="relative">
+          <div className="flex animate-scroll space-x-6">
+            {/* First set of jobs */}
+            {jobs.map((job, index) => (
+              <div
+                key={index}
+                className="flex-shrink-0 bg-white p-6 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300 min-w-[300px]"
+              >
+                <div className="flex items-center space-x-4">
+                  <div className="text-3xl">{job.logo}</div>
+                  <div>
+                    <h3 className="font-bold text-gray-900">{job.company}</h3>
+                    <p className="text-gray-600">{job.position}</p>
+                    <p className="text-sm text-gray-500">{job.time}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+            
+            {/* Duplicate set for seamless loop */}
+            {jobs.map((job, index) => (
+              <div
+                key={`duplicate-${index}`}
+                className="flex-shrink-0 bg-white p-6 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300 min-w-[300px]"
+              >
+                <div className="flex items-center space-x-4">
+                  <div className="text-3xl">{job.logo}</div>
+                  <div>
+                    <h3 className="font-bold text-gray-900">{job.company}</h3>
+                    <p className="text-gray-600">{job.position}</p>
+                    <p className="text-sm text-gray-500">{job.time}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="text-center mt-12">
+          <button
+            onClick={() => {
+              const modal = document.getElementById('signup-modal');
+              if (modal) modal.classList.remove('hidden');
+            }}
+            className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-8 py-4 rounded-full font-bold hover:from-orange-600 hover:to-orange-700 transition-all duration-200 shadow-lg hover:scale-105"
+          >
+            Apply to These Jobs Automatically
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default MovingJobs;
