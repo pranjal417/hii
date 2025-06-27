@@ -35,21 +35,21 @@ const Navigation = () => {
         : 'bg-white/80 backdrop-blur-sm'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-14 sm:h-16">
           {/* Logo - Text Only */}
           <div className="flex items-center">
-            <span className="text-2xl font-bold bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent">
+            <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent">
               FLASHFIRE
             </span>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
             {navItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                className="font-medium text-gray-700 transition-colors duration-200 hover:text-orange-600"
+                className="font-medium text-gray-700 transition-colors duration-200 hover:text-orange-600 text-sm lg:text-base"
               >
                 {item.name}
               </a>
@@ -60,7 +60,7 @@ const Navigation = () => {
           <div className="hidden md:block">
             <button
               onClick={openModal}
-              className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-2.5 rounded-full font-semibold hover:from-orange-600 hover:to-orange-700 transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105"
+              className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-4 lg:px-6 py-2 lg:py-2.5 rounded-full font-semibold hover:from-orange-600 hover:to-orange-700 transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105 text-sm lg:text-base"
             >
               Start Free Trial
             </button>
@@ -72,7 +72,7 @@ const Navigation = () => {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="text-gray-700 transition-colors duration-200"
             >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
         </div>
@@ -85,7 +85,7 @@ const Navigation = () => {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-gray-700 hover:text-orange-600 block px-3 py-2 font-medium transition-colors duration-200"
+                  className="text-gray-700 hover:text-orange-600 block px-3 py-2 font-medium transition-colors duration-200 text-sm"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
@@ -93,7 +93,7 @@ const Navigation = () => {
               ))}
               <button
                 onClick={openModal}
-                className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-3 py-2 rounded-full font-semibold hover:from-orange-600 hover:to-orange-700 transition-all duration-200 block text-center mt-4 w-full"
+                className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-3 py-2 rounded-full font-semibold hover:from-orange-600 hover:to-orange-700 transition-all duration-200 block text-center mt-4 w-full text-sm"
               >
                 Start Free Trial
               </button>
